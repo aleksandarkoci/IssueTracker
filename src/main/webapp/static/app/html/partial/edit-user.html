@@ -1,0 +1,17 @@
+<div ng-controller="editUserCtrl">
+	<form>
+		<div>
+			<label>Username</label>
+			<input class="form-control" ng-model="user.username" placeholder="Enter your username"/>
+
+			<label>Password</label>
+			<input class="form-control" ng-model="user.password" placeholder="Enter your password"/>
+
+			<label>Email</label>
+			<input class="form-control" ng-model="user.email" placeholder="Enter your email"/>
+		</div>
+		<br />
+		<button class="btn btn-sm btn-primary" ng-disabled="(!got_user)"
+			ng-click="editUser(user.id)">Change</button>
+	</form>
+</div>
