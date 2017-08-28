@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import issue.tracker.entity.User;
 import issue.tracker.service.UserService;
+import issue.tracker.support.UserDTOToUser;
+import issue.tracker.web.dto.UserDTO;
 
 @RestController
 @RequestMapping(value="/api/user")
@@ -21,6 +23,9 @@ public class ApiUserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserDTOToUser toUser;
 	
 	
 	/********************************* getAll *********************************/
@@ -63,18 +68,14 @@ public class ApiUserController {
 	 * post add
 	 *********************************/
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<User> add(@RequestBody User newUser) {
-
-		User user = new User();
-
-		if (newUser.getId() != null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		} else {
-			user = userService.save(newUser);
-		}
-
-		return new ResponseEntity<>(user, HttpStatus.OK);
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<UserDTO> add(@RequestBody UserDTO newUser){
+		
+		User user = toUser.convert(newUser); 
+		
+		user = userService.save(user);
+		
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	
@@ -82,14 +83,15 @@ public class ApiUserController {
 	 * put edit
 	 *********************************/
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<User> edit(@PathVariable Integer id, @RequestBody User editUser) {
+	public ResponseEntity<UserDTO> edit(@PathVariable Integer id, @RequestBody UserDTO editUser) {
 
 		if (!id.equals(editUser.getId())) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		User user = userService.save(editUser);
+		User user = toUser.convert(editUser);
+		userService.save(user);
 
-		return new ResponseEntity<>(user, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

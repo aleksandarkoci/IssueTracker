@@ -23,6 +23,10 @@ issueApp.controller('userCtrl', function ($scope, $http, $location) {
 	$scope.editUserInSinglePage = function(id){
         $location.path("/user/edit/" + id);            
 	}
+	
+	$scope.addUser = function(){
+        $location.path("/user/newuser/");            
+	}
 
 	$scope.delete = function(id){        
         $http.delete(url_base_user + "/" + id).then( 

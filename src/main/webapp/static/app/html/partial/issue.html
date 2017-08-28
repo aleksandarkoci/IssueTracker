@@ -6,7 +6,7 @@
 				<th>#</th>
 				<th>Username</th>
 				<th>Email</th>
-				<th>Bug(s)</th>
+				<th>Bug</th>
 			</tr>
 			<tr ng-repeat="item in users">
 				<td>{{item.id}}</td>
@@ -19,6 +19,6 @@
 	</table>
 	<br />
 	<div class="col-md-8">
-		<button class="btn btn-sm btn-primary" ng-click="addUser">Create new user and bug</button>
+		<button class="btn btn-sm btn-primary" ng-click="addUser()">Create new user and bug</button>
 	</div>
 </div>
