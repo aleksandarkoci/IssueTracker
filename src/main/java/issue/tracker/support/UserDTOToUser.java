@@ -23,7 +23,6 @@ public class UserDTOToUser implements Converter<UserDTO, User> {
 		
 		User user;
 		
-		
 		if (source.getId() == null) {
 			user = new User();
 			List<Bug> bugList = new ArrayList<>();

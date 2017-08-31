@@ -5,7 +5,6 @@ issueApp.controller('addUserCtrl', function ($scope, $http, $routeParams, $locat
 	
 	var url_base_user = "http://localhost:8080/api/user";
 
-	
 	$scope.user = {};
 	$scope.user.id = null;
 	$scope.user.username = '';
@@ -27,5 +26,4 @@ issueApp.controller('addUserCtrl', function ($scope, $http, $routeParams, $locat
 			}
 		);
 	}	
-	
 });

@@ -1,6 +1,6 @@
 <div ng-controller="addUserCtrl">
 	<h1>Fill the fields</h1>
-	 <form class="my-form" novalidate>
+	 <form name="userForm" novalidate>
 		<div>
 			<label>Username</label>
 			<input class="form-control" ng-model="user.username" placeholder="Enter new username" required/>
@@ -8,25 +8,23 @@
 			<label>Password</label>
 			<input class="form-control" ng-model="user.password" placeholder="Enter new Password" required/>
 
-			<label>Email</label>
-			<input class="form-control" type="email" ng-model="user.email" name="email" placeholder="Enter new email" required/>
+			<div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
+				<label>Email</label>
+				<input type="email" name="email" class="form-control" 
+	       			ng-model="user.email"
+	        		ng-minlength="7"
+	        		ng-maxlength="20"
+	        		required>
+	        
+				<div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+	        		<div ng-messages-include="messages.html"></div>
+	      		</div>
+      		</div>
 
 			<label>Bugs</label>
 			<input class="form-control" ng-model="user.bug" placeholder="Enter new bug" required/>
 		</div>
 		<br />
-		<button class="btn btn-sm btn-primary" ng-click="addUser()">Save</button>
+		<button class="btn btn-sm btn-primary" ng-click="addUser()" ng-disabled="userForm.$invalid">Save</button>
 	</form>
 </div>
-
-<!-- 
-<style type="text/css">
-  .my-form input.ng-invalid.ng-touched {
-    background-color: #FA787E;
-  }
-
-  .my-form input.ng-valid.ng-touched {
-    background-color: #78FA89;
-  }
-</style>
- -->
