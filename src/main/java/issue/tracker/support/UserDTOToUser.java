@@ -19,25 +19,30 @@ public class UserDTOToUser implements Converter<UserDTO, User> {
 	private UserService userService;
 
 	@Override
-	public User convert(UserDTO source) {
+	public User convert(UserDTO dto) {
 		
 		User user;
 		
-		if (source.getId() == null) {
+		
+		if (dto.getId() == null) {
+			
 			user = new User();
 			List<Bug> bugList = new ArrayList<>();
-			Bug bug = new Bug(null, source.getBug(), user);
+			Bug bug = new Bug(null, dto.getBug(), dto.getDateCreated());
 			bugList.add(bug);
 
 			user.setBugList(bugList);
 		} else {
-			user = userService.findOne(source.getId());
+			
+			user = userService.findOne(dto.getId());
+			
 		}
 		
-		user.setId(source.getId());
-		user.setEmail(source.getEmail());
-		user.setPassword(source.getPassword());
-		user.setUsername(source.getUsername());
+		
+		user.setId(dto.getId());
+		user.setEmail(dto.getEmail());
+		user.setPassword(dto.getPassword());
+		user.setUsername(dto.getUsername());
 		return user;
 	}
 

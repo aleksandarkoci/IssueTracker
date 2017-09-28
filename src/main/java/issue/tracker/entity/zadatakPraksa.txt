@@ -1,0 +1,17 @@
+Potrebno da se uradi maven project koristeci JSP (JSTL)
+Upitanju je mini aplikacija koja vodi evidenciju prijavljenim bugvima.
+Dakle imam entitete User i Bug, potrebno je napraviti vezu OneToManty
+(da imaju sredinju tabelu).
+User sadrzi sledece atribute: Intiger id, String username, String password,
+							  String email, List<Bug> bugList
+Bug sadrzi sledece atribute:  Intiger id, String bugName, Date dateCreated,
+							  "mislim da je potrebno i neki (int count) uvesti
+							  jer na kraju moram da znam koliko je ukupno bugova
+							  prijavljeno za koji dan)
+Treba da se odradi cela CRUD logika (get, post, put, delete), na prvoj i glavnoj
+strani treba da se ispisse tabela sa svim podacima o user-u i bug-u, zatim da
+imam redirekciju ka posebnoj stranici na kojoj ce se prikazati tabela samo sa userima
+koji ce moci da se delete i edit na posebno dugme(kada se pritisne edit mora opet da
+ode na zasebnu stranicu na kojoj ce se vrsiti izmene)
+I na kraju imam jednu biblioteku da povezem sa projektom d3.js koja mi sluzi da
+prikaze na dijagramu koliko je bugova prijavljeno koji dan!

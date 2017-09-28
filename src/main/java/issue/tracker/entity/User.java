@@ -6,9 +6,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,7 +19,7 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	@Column (name="ID")
+	@Column (name="USER_ID")
 	private Integer id;
 	
 	@Column (name="USERNAME")
@@ -30,9 +31,10 @@ public class User {
 	@Column (name="EMAIL")
 	private String email;
 	
-	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "buguser_tbl", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "BUG_ID"))
 	private List<Bug> bugList = new ArrayList<>();
-
+	
 	public User() {}
 
 	public User(String username, String password, String email, List<Bug> bugList) {
@@ -89,6 +91,4 @@ public class User {
 	public void setBugList(List<Bug> bugList) {
 		this.bugList = bugList;
 	}
-	
-	
 }

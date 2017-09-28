@@ -3,28 +3,29 @@
 	 <form name="userForm" novalidate>
 		<div>
 			<label>Username</label>
-			<input class="form-control" ng-model="user.username" placeholder="Enter new username" required/>
-
+			<input class="form-control" ng-model="user.username" placeholder="Username" required />
+			<br />
 			<label>Password</label>
-			<input class="form-control" ng-model="user.password" placeholder="Enter new Password" required/>
-
+			<input class="form-control" ng-model="user.password" placeholder="Password" required />
+			<br />
 			<div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
 				<label>Email</label>
-				<input type="email" name="email" class="form-control" 
+				<input type="email" name="email" class="form-control" placeholder="issue@tracker.com"
 	       			ng-model="user.email"
 	        		ng-minlength="7"
-	        		ng-maxlength="20"
-	        		required>
-	        
+	        		ng-maxlength="25"
+	        		required />
 				<div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
 	        		<div ng-messages-include="messages.html"></div>
 	      		</div>
       		</div>
-
-			<label>Bugs</label>
+      		<label>Created date</label>
+			<input class="form-control" type="date" ng-model="user.dateCreated" placeholder="mm/dd/yyyy" required />
+			<br />
+			<label>Bug</label>
 			<input class="form-control" ng-model="user.bug" placeholder="Enter new bug" required/>
 		</div>
 		<br />
-		<button class="btn btn-sm btn-primary" ng-click="addUser()" ng-disabled="userForm.$invalid">Save</button>
+		<button class="btn btn-sm btn-primary pull-right" ng-click="addUser()" ng-disabled="userForm.$invalid">Save</button>
 	</form>
 </div>

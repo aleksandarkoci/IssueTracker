@@ -6,7 +6,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 @SpringBootApplication
 public class IssueTrackerApplication extends SpringBootServletInitializer {
-
+	
 	public static void main (String[] args) {
 		SpringApplication.run(IssueTrackerApplication.class, args);
 	}

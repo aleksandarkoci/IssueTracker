@@ -1,11 +1,19 @@
 <div ng-controller="issueCtrl">
 	<h1>Reported bugs</h1>
 	<br />
+	<div class="col-md-12">
+		<button class="btn btn-sm btn-primary pull-right" ng-click="addUser()">Create new user and bug</button>
+		<!-- <button class="btn btn-sm btn-primary pull-right" ng-click="report()">Reporting new bug</button> -->
+		<!-- <button class="btn btn-sm btn-primary" id="btn">Click here to represent JSON</button> -->
+	</div>
+	<br />
+	<br />
 	<table class="table table-inverse">
 			<tr>
 				<th>#</th>
 				<th>Username</th>
 				<th>Email</th>
+				<th>Creation date</th>
 				<th>Bug</th>
 			</tr>
 			<tr ng-repeat="item in users">
@@ -13,12 +21,16 @@
 				<td>{{item.username}}</td>
 				<td>{{item.email}}</td>
 				<td ng-repeat="bl in item.bugList">
+					{{bl.dateCreated}}</td>
+				<td ng-repeat="bl in item.bugList">
 					{{bl.bugName}}
 				</td>
 			</tr>
 	</table>
-	<br />
-	<div class="col-md-8">
-		<button class="btn btn-sm btn-primary" ng-click="addUser()">Create new user and bug</button>
-	</div>
+
+	<div class="importData"></div>
+
+	<script>
+		importData();
+	</script>
 </div>

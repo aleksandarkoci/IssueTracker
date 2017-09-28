@@ -1,5 +1,7 @@
 package issue.tracker.web.dto;
 
+import java.sql.Date;
+
 public class UserDTO {
 
 	private Integer id;
@@ -7,6 +9,8 @@ public class UserDTO {
 	private String password;
 	private String email;
 	private String bug;
+	private Date dateCreated;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -37,6 +41,10 @@ public class UserDTO {
 	public void setBug(String bug) {
 		this.bug = bug;
 	}
-	
-	
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 }

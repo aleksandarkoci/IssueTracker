@@ -5,6 +5,7 @@ issueApp.controller('userCtrl', function ($scope, $http, $location) {
 	var url_base_user = "http://localhost:8080/api/user";
 
 	$scope.users = [];
+	$scope.bags = [];
 
 	var getUsers = function() {
 		$http.get(url_base_user).then(

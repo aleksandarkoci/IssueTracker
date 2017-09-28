@@ -37,8 +37,7 @@ public class ApiUserController {
 		user = userService.findAll();
 
 		return new ResponseEntity<>(user, HttpStatus.OK);
-	}
-	
+	}	
 	
 	/********************************* getById *********************************/
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
